@@ -1,93 +1,105 @@
 ﻿@charset "utf-8";
 @import url(http://fonts.googleapis.com/css?family=Poiret+One);
 
-/* reset */
-* { margin:0;  padding:0;}
-ol,ul { list-style: none; }
-a { outline:0; text-decoration:none; color:#555; }
-img { border:0;}
-body { font:12px/1.6 'Poiret One'; color:#555; } 
+/* 전체 레이아웃 초기화 */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:Arial, sans-serif; background:#fff;}
 
-/*레이아웃*/
-header { position:fixed; width:15%; height:100%; background:#fff; top:0px; left:0px; transition:all 0.5s;}
-nav { position:relative; width:85%; height:35px; background:#212121; margin-left:15%; transition:all 0.5s;}
-section { width:85%; position:relative; margin-left:15%;}
-article { float:left; height:260px; transition:all 0.5s; animation:scale 1s 1;}
-article:nth-child(1) { width:60%; height:520px; background:#000;}
-article:nth-child(2) { width:40%; background:#ccc;}
-article:nth-child(3) { width:20%; background:#bbb;}
-article:nth-child(4) { width:20%; background:#aaa;}
-article:nth-child(5) { width:20%; background:#999;}
-article:nth-child(6) { width:40%; background:#888;}
-article:nth-child(7) { width:20%; background:#777;}
-article:nth-child(8) { width:20%; background:#666;}
-article:nth-child(9) { width:40%; background:#555;}
-article:nth-child(10) { width:20%;	background:#444;}
-article:nth-child(11) { width:20%; background:#333;}
-article:nth-child(12) { width:20%;	background:#222;}
-@keyframes scale {
-	0% { transform:scale(0); }	
-	100% { transform:scale(1); }
+/* 헤더 */
+header {
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	padding:15px 30px;
+	background:#222;
+	color:#fff;
 }
-article>div { position:relative; width:100%; height:100%; overflow:hidden; cursor:pointer; }
+header h1 {font-size:20px;}
+#gnb a {color:#fff; margin:0 10px; text-decoration:none;}
+.snsSet a {color:#fff; margin-left:10px;}
 
-/* header 컨텐츠 */
-header h1 { width:180px; height:136px; background:url(../img/mlb\ logo.png) no-repeat 0px 0px; background-size:contain; position:absolute; top:70px;	left:50%; margin-left:-90px;	text-indent:-99999px;}
-#gnb { position:absolute; top:300px; right:57px;}
-#gnb a { display:block; padding:8px 30px;	font-size:17px; font-weight:bold; color:#555; text-align:left; line-height:1.8; transition:all .5s;}
-#gnb a:hover { color:skyblue;}
-#gnb a i { margin-right:13px;}
-.snsSet { width:90px;	height:47px;	position:absolute; bottom:50px; right:50%; margin-right:-45px;}
-.snsSet a { float:left;}
+/* 네비게이션 */
+nav {
+	display:flex;
+	justify-content:center;
+	background:#eee;
+	padding:10px;
+}
+nav a {color:#333; margin:0 15px; font-size:18px;}
 
-/*nav*/
-nav a:nth-child(1) {	position:absolute; top:5px;	left:10px;}
-nav a:nth-child(2) {	position:absolute; top:5px;	left:150px;}
-nav a:nth-child(3) {	position:absolute; top:5px;	right:90px;}
-nav a:nth-child(4) {	position:absolute; top:5px;	right:10px;}
+/* 섹션 그리드 */
+section {
+	display:grid;
+	grid-template-columns:repeat(4, 1fr);
+	grid-auto-rows:200px;
+	gap:10px;
+	padding:10px;
+}
 
-/* 동영상 배경 설정 */
+/* 1번 영상 배경 */
 .bg1 {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+	position:relative;
+	grid-column:span 4;
+	height:400px;
+	overflow:hidden;
 }
 .bg1 video {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	min-width: 100%;
-	min-height: 100%;
-	transform: translate(-50%, -50%);
-	object-fit: cover;
+	position:absolute;
+	top:50%;
+	left:50%;
+	min-width:100%;
+	min-height:100%;
+	transform:translate(-50%, -50%);
+	object-fit:cover;
+	z-index:-1;
+}
+.bg1 span {
+	position:absolute;
+	bottom:20px;
+	left:20px;
+	color:white;
+	font-size:2.5rem;
+	font-weight:bold;
+	z-index:1;
+	text-shadow:2px 2px 5px rgba(0,0,0,0.7);
 }
 
-/* 나머지 배경 이미지 */
-article .bg2 { background-image:url(../img/ka1.png);}
-article .bg3 { background-image:url(../img/Cap.png);}
-article .bg4 { background-image:url(../img/ka2.png);}
-article .bg5 { background-image:url(../img/Bag.png);}
-article .bg6 { background-image:url(../img/ka3.png);}
-article .bg7 { background-image:url(../img/Shoes.png);}
-article .bg { background-size:cover; background-position:center center; }
+/* 이미지 배경 */
+.bg {
+	position:relative;
+	width:100%;
+	height:100%;
+	background-size:cover;
+	background-position:center;
+}
+.bg span {
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	color:white;
+	font-size:1.5rem;
+	font-weight:bold;
+	text-shadow:1px 1px 3px rgba(0,0,0,0.6);
+}
 
-article .bg span { font-size:60px; color:#fff;	position:absolute; bottom:0px; right:20px; transform:scale(10); opacity:0;	transition:all 0.6s;}
-article .bg1 span { font-size:170px; bottom:-76px;	right:-6px; opacity:1; transform:scale(1); transition:all 0.5s;}
+/* 텍스트 블록 */
+.txt {
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	background:#f5f5f5;
+	text-align:center;
+	padding:20px;
+}
+.txt i {font-size:2rem; margin-bottom:10px; color:#333;}
+.txt strong {font-size:1.2rem; margin-bottom:5px;}
+.txt p {font-size:0.9rem; color:#666;}
 
-/*이미지박스 호버효과*/
-article:hover .bg span { opacity:1; transform:scale(1);}
-article .bg1:hover span { transform:rotateY(360deg); color:#222; }
-
-/* 텍스트박스 */
-article .txt { color:#666; background:#fff; box-sizing:border-box; padding:40px 30px; transition:all 1s;}
-article:nth-child(3) .txt { background:#bff7fa;}
-article:nth-child(11) .txt { background:#e3f1fb;}
-article .txt i { font-size:300px; color:#b2effc; opacity:0; position:absolute; bottom:-70px; right:-200px; transition:all 0.7s;}
-article:nth-child(3) .txt i {	position:absolute; bottom:-20px; right:-15px; font-size:200px; color:#fff; opacity:0.7;}
-article .txt strong { font-size:30px;	font-weight:normal; line-height:1.6;	color:#444; margin-bottom:20px; transition:all 1s;}
-
-/*텍스트박스 호버효과*/
-article:hover .txt { background:#6ce2fb;	color:#fff;}
-article:hover .txt i { right:0px; opacity:0.5;}
-article:hover .txt strong { color:#fff;}
+/* 배경 이미지 예시 */
+.bg2 {background-image:url("img/bg2.jpg");}
+.bg3 {background-image:url("img/bg3.jpg");}
+.bg4 {background-image:url("img/bg4.jpg");}
+.bg5 {background-image:url("img/bg5.jpg");}
+.bg6 {background-image:url("img/bg6.jpg");}
+.bg7 {background-image:url("img/bg7.jpg");}
