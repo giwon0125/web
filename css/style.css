@@ -48,15 +48,11 @@ nav a:nth-child(4) { position:absolute; top:5px; right:10px;}
 
 article > div { position:relative; width:100%; height:100%; overflow:hidden; cursor:pointer; }
 
-/* bg1 비디오 스타일 유지 */
-article .bg1 video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+article .bg1 {
+  background-image:url(../img/ka0.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 /* 이미지 배경 */
@@ -110,4 +106,4 @@ article:hover .txt strong { color:#fff;}
 @media screen and (min-width:780px) and (max-width:1023px) { }
 @media screen and (min-width:640px) and (max-width:779px) { }
 @media screen and (min-width:480px) and (max-width:639px) { }
-@media screen and (max-width:479px){ }
+@media screen and (max-width:479px){ } 
