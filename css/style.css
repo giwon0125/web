@@ -55,11 +55,26 @@ article .bg1 {
   position: relative;
   overflow: hidden;
 }
-article .bg2 { background-image:url(../img/ka1.png);}
+article .bg2 {
+  background-image:url(../img/ka1.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 article .bg3 { background-image:url(../img/Cap.png);}
-article .bg4 { background-image:url(../img/ka2.png);}
+article .bg4 {
+  background-image:url(../img/ka2.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 article .bg5 { background-image:url(../img/Bag.png);}
-article .bg6 { background-image:url(../img/ka3.png);}
+article .bg6 {
+  background-image:url(../img/ka3.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 article .bg7 { background-image:url(../img/Shoes.png);}
 
 /* bg1 내부 video 스타일 추가 */
@@ -113,4 +128,4 @@ article:hover .txt strong { color:#fff;}
 }
 @media screen and (max-width:479px){
 	/* 기존 내용 생략 */
-}
+}  
